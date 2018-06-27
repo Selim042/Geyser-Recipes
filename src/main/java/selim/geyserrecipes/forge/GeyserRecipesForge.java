@@ -25,7 +25,7 @@ public class GeyserRecipesForge {
 	public static SimpleNetworkWrapper network;
 
 	@EventHandler
-	public static void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event) {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(GeyserRecipesInfo.CHANNEL);
 		network.registerMessage(SpigotRecipeWrapperForge.Handler.class, SpigotRecipeWrapperForge.class,
 				GeyserRecipesInfo.PacketDiscrimators.RECIPE, Side.CLIENT);
@@ -38,12 +38,8 @@ public class GeyserRecipesForge {
 	// MinecraftForge.EVENT_BUS.register(this);
 	// }
 
-	@ObjectHolder(GeyserRecipesInfo.ID)
-	public static class Items {
-
-		public static final DummyItem DUMMY_ITEM = null;
-
-	}
+	@ObjectHolder(GeyserRecipesInfo.ID + ":dummy_item")
+	public static final DummyItem DUMMY_ITEM = null;
 
 	@Mod.EventBusSubscriber
 	public static class StupidRegistrySubclass {

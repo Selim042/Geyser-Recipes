@@ -16,6 +16,7 @@ public class DummyItem extends Item {
 	public DummyItem() {
 		this.setRegistryName(GeyserRecipesInfo.ID, "dummy_item");
 		this.setUnlocalizedName(GeyserRecipesInfo.ID + ":dummy_item");
+		this.setTileEntityItemStackRenderer(new DummyItemRenderer());
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -58,7 +59,7 @@ public class DummyItem extends Item {
 		if (stack == null || stack.isEmpty())
 			return ItemStack.EMPTY;
 		NBTTagCompound wrappedNbt = stack.serializeNBT();
-		ItemStack dummyStack = new ItemStack(GeyserRecipesForge.Items.DUMMY_ITEM);
+		ItemStack dummyStack = new ItemStack(GeyserRecipesForge.DUMMY_ITEM);
 		NBTTagCompound dummyNbt = dummyStack.getTagCompound();
 		if (dummyNbt == null) {
 			dummyNbt = new NBTTagCompound();
