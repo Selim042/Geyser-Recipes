@@ -1,0 +1,16 @@
+[
+{
+  "modid": "geyserrecipes",
+  "name": "Geyser Recipes",
+  "description": "Syncs custom recipes from a Spigot server to the client.  Part of the Geyser suite.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Selim_042"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,1 +1,1 @@
-# Geyser-Recipes
+# Submit Issues
