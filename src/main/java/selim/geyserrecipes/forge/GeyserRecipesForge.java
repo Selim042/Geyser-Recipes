@@ -38,8 +38,12 @@ public class GeyserRecipesForge {
 	// MinecraftForge.EVENT_BUS.register(this);
 	// }
 
-	@ObjectHolder(GeyserRecipesInfo.ID + ":dummy_item")
-	public static final DummyItem DUMMY_ITEM = null;
+	@ObjectHolder(GeyserRecipesInfo.ID)
+	public static class Items {
+
+		public static final DummyItem DUMMY_ITEM = null;
+
+	}
 
 	@Mod.EventBusSubscriber
 	public static class StupidRegistrySubclass {
