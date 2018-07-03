@@ -1,6 +1,7 @@
 package selim.geyserrecipes.forge;
 
-import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.ingredients.IIngredients;
@@ -27,10 +28,14 @@ public class SpigotRecipeWrapperForgeWrapper implements IShapedCraftingRecipeWra
 				.expandRecipeItemStackInputs(this.recipeWrapper.getRecipe().getIngredients()));
 		ItemStack result = this.recipeWrapper.getRecipe().getRecipeOutput();
 		ItemStack wrappedStack = DummyItem.getWrapperStack(result);
-		if (wrappedStack == ItemStack.EMPTY)
-			ingredients.setOutput(ItemStack.class, Collections.singletonList(result));
-		else
-			ingredients.setOutput(ItemStack.class, Collections.singletonList(wrappedStack));
+		// if (wrappedStack == ItemStack.EMPTY)
+		List<ItemStack> output = new LinkedList<>();
+		output.add(wrappedStack);
+		output.add(result);
+		ingredients.setOutput(ItemStack.class, output);
+		// else
+		// ingredients.setOutput(ItemStack.class,
+		// Collections.singletonList(wrappedStack));
 	}
 
 	@Override

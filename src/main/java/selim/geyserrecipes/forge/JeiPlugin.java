@@ -44,8 +44,9 @@ public class JeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
-//		subtypeRegistry.registerSubtypeInterpreter(GeyserRecipesForge.DUMMY_ITEM, interpreter);
-//		subtypeRegistry.useNbtForSubtypes(GeyserRecipesForge.DUMMY_ITEM);
+		subtypeRegistry.registerSubtypeInterpreter(GeyserRecipesForge.DUMMY_ITEM,
+				new DummyItemSubtypeInterpreter());
+		// subtypeRegistry.useNbtForSubtypes(GeyserRecipesForge.DUMMY_ITEM);
 	}
 
 	@SuppressWarnings("unchecked")

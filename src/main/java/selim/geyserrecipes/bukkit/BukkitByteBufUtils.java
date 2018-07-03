@@ -6,11 +6,14 @@ import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
 
 import org.apache.commons.lang3.Validate;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 import com.comphenix.protocol.wrappers.nbt.NbtCompound;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
+import net.minecraft.server.v1_12_R1.PacketDataSerializer;
 
 public class BukkitByteBufUtils {
 
@@ -146,8 +149,11 @@ public class BukkitByteBufUtils {
 	 *            The itemstack to write
 	 */
 	public static void writeItemStack(ByteBuf to, ItemStack stack) {
-		BukkitPacketBuffer pb = new BukkitPacketBuffer(to);
-		pb.writeItemStack(stack);
+		PacketDataSerializer serial = new PacketDataSerializer(to);
+		serial.a(CraftItemStack.asNMSCopy(stack));
+//		BukkitPacketBuffer pb = new BukkitPacketBuffer(to);
+//		System.out.println("writing ItemStack 1");
+//		pb.writeItemStack(stack);
 	}
 
 	/**

@@ -242,18 +242,19 @@ public class BukkitPacketBuffer extends ByteBuf {
 	 * Writes a compressed NbtCompound to this buffer
 	 */
 	public BukkitPacketBuffer writeCompoundTag(@Nullable NbtCompound nbt) {
-		StreamSerializer serializer = StreamSerializer.getDefault();
-		if (nbt == null) {
-			this.writeByte(0);
-		} else {
-			try {
-				serializer.serializeCompound(new DataOutputStream(new ByteBufOutputStream(this)), nbt);
-				// CompressedStreamTools.write(nbt, new
-				// ByteBufOutputStream(this));
-			} catch (IOException ioexception) {
-				throw new EncoderException(ioexception);
-			}
-		}
+		
+//		StreamSerializer serializer = StreamSerializer.getDefault();
+//		if (nbt == null) {
+//			this.writeByte(0);
+//		} else {
+//			try {
+//				serializer.serializeCompound(new DataOutputStream(new ByteBufOutputStream(this)), nbt);
+//				// CompressedStreamTools.write(nbt, new
+//				// ByteBufOutputStream(this));
+//			} catch (IOException ioexception) {
+//				throw new EncoderException(ioexception);
+//			}
+//		}
 
 		return this;
 	}
@@ -299,6 +300,7 @@ public class BukkitPacketBuffer extends ByteBuf {
 		// }
 		// return this;
 
+		System.out.println("writing ItemStack 2");
 		if (stack == null || stack.getType() == Material.AIR) {
 			this.writeShort(-1);
 		} else {
@@ -306,6 +308,7 @@ public class BukkitPacketBuffer extends ByteBuf {
 			this.writeByte(stack.getAmount());
 			this.writeShort(stack.getDurability());
 			NbtCompound NbtCompound = null;
+			System.out.println("writing ItemStack 3");
 
 			// if (stack.getItem().isDamageable() ||
 			// stack.getItem().getShareTag()) {

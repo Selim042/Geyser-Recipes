@@ -12,6 +12,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -70,6 +71,7 @@ public class SpigotRecipeWrapperForge implements IMessage {
 			this.recipe = readShapeless(buf);
 			break;
 		}
+		System.out.println("from bytes, recipe name: " + this.recipe.getRegistryName());
 	}
 
 	private static ShapedOreRecipe readShaped(ByteBuf buf) {
@@ -77,6 +79,13 @@ public class SpigotRecipeWrapperForge implements IMessage {
 		ResourceLocation key = getKey(ByteBufUtils.readUTF8String(buf));
 		// Result
 		ItemStack result = ByteBufUtils.readItemStack(buf);
+		// Write recipe name to result NBT
+		NBTTagCompound nbt = result.getTagCompound();
+		if (nbt == null) {
+			nbt = new NBTTagCompound();
+			result.setTagCompound(nbt);
+		}
+		nbt.setString(GeyserRecipesInfo.ID + ":recipe_name", key.toString());
 		List<Object> recipeParams = new ArrayList<>();
 		List<String> shapeList = new ArrayList<>();
 		// Recipe shape, line by line
@@ -122,7 +131,8 @@ public class SpigotRecipeWrapperForge implements IMessage {
 			recipeParams.add(e.getValue());
 		}
 
-		ShapedOreRecipe recipe = new ShapedOreRecipe(key, result, recipeParams.toArray(new Object[0]));
+		ShapedOreRecipe recipe = new ShapedOreRecipe(null, result, recipeParams.toArray(new Object[0]));
+		recipe.setRegistryName(key);
 		return recipe;
 	}
 
@@ -169,12 +179,20 @@ public class SpigotRecipeWrapperForge implements IMessage {
 		ResourceLocation key = getKey(ByteBufUtils.readUTF8String(buf));
 		// Result
 		ItemStack result = ByteBufUtils.readItemStack(buf);
+		// Write recipe name to result NBT
+		NBTTagCompound nbt = result.getTagCompound();
+		if (nbt == null) {
+			nbt = new NBTTagCompound();
+			result.setTagCompound(nbt);
+		}
+		nbt.setString(GeyserRecipesInfo.ID + ":recipe_name", key.toString());
 		// Size of ingredient list
 		List<Object> ings = new ArrayList<>();
 		int size = buf.readInt();
 		for (int stack = 0; stack < size; stack++)
 			ings.add(ByteBufUtils.readItemStack(buf));
-		ShapelessOreRecipe recipe = new ShapelessOreRecipe(key, result, ings.toArray(new Object[0]));
+		ShapelessOreRecipe recipe = new ShapelessOreRecipe(null, result, ings.toArray(new Object[0]));
+		recipe.setRegistryName(key);
 		return recipe;
 	}
 

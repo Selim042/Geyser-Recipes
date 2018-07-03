@@ -44,11 +44,11 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 		}
 	}
 
-//	@EventHandler
+	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		int ping = getPing(player);
-		if (ping >= 0)
+		if (ping <= 0)
 			ping = 40;
 		else
 			ping = ping / 25;
@@ -56,9 +56,10 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 
 			@Override
 			public void run() {
+				System.out.println("executing");
 				boolean sent = sendRecipes(player);
 				if (!sent) {
-					player.sendMessage("This server has Spigot Recipes installed. "
+					player.sendMessage("This server has " + GeyserRecipesInfo.NAME + " installed. "
 							+ "If you install the client companion Forge mod, "
 							+ "you can see any custom recipes from Spigot plugins installed on the server.");
 					player.sendMessage("You can find the mod here: ");
@@ -129,6 +130,12 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 		}
 		for (Recipe r : customRecipes) {
 			SpigotRecipeWrapperSpigot packet = new SpigotRecipeWrapperSpigot(r);
+			NamespacedKey key = null;
+			if (r instanceof ShapedRecipe)
+				key = ((ShapedRecipe) r).getKey();
+			else if (r instanceof ShapelessRecipe)
+				key = ((ShapelessRecipe) r).getKey();
+			System.out.println("sending recipe: " + key);
 			ByteBuf buf = Unpooled.buffer();
 			buf.writeByte(GeyserRecipesInfo.PacketDiscrimators.RECIPE);
 			packet.toBytes(buf);
