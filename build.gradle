@@ -97,6 +97,13 @@ dependencies {
 }
 // end jei stuff
 
-jar {
-    exclude 'selim/geyserrecipes/bukkit/*'
+//jar {
+//    exclude 'selim/geyserrecipes/bukkit/**/*'
+//}
+sourceSets {
+    main {
+        java {
+            exclude '**/bukkit/*'
+        }
+    }
 }
