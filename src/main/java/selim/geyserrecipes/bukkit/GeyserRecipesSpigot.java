@@ -56,7 +56,6 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 
 			@Override
 			public void run() {
-				System.out.println("executing");
 				boolean sent = sendRecipes(player);
 				if (!sent) {
 					player.sendMessage("This server has " + GeyserRecipesInfo.NAME + " installed. "
@@ -130,12 +129,6 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 		}
 		for (Recipe r : customRecipes) {
 			SpigotRecipeWrapperSpigot packet = new SpigotRecipeWrapperSpigot(r);
-			NamespacedKey key = null;
-			if (r instanceof ShapedRecipe)
-				key = ((ShapedRecipe) r).getKey();
-			else if (r instanceof ShapelessRecipe)
-				key = ((ShapelessRecipe) r).getKey();
-			System.out.println("sending recipe: " + key);
 			ByteBuf buf = Unpooled.buffer();
 			buf.writeByte(GeyserRecipesInfo.PacketDiscrimators.RECIPE);
 			packet.toBytes(buf);

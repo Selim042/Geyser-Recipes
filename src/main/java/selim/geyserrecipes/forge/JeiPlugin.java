@@ -10,7 +10,6 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.IRecipeRegistry;
 import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
-import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
@@ -23,12 +22,13 @@ public class JeiPlugin implements IModPlugin {
 	private static final List<SpigotRecipeWrapperForgeWrapper> HIDDEN_RECIPES = new CopyOnWriteArrayList<>();
 	private static IModRegistry MOD_REGISTRY;
 	private static IRecipeRegistry RECIPE_REGISTRY;
-	private static IIngredientBlacklist INGREDIENT_BLACKLIST;
+	// private static IIngredientBlacklist INGREDIENT_BLACKLIST;
 
 	@Override
 	public void register(IModRegistry registry) {
 		MOD_REGISTRY = registry;
-		INGREDIENT_BLACKLIST = registry.getJeiHelpers().getIngredientBlacklist();
+		// INGREDIENT_BLACKLIST =
+		// registry.getJeiHelpers().getIngredientBlacklist();
 		registry.handleRecipes(SpigotRecipeWrapperForge.class,
 				new IRecipeWrapperFactory<SpigotRecipeWrapperForge>() {
 
@@ -45,7 +45,6 @@ public class JeiPlugin implements IModPlugin {
 	// public static SubtypeRegistry subtypeRegistry;
 	// public static Map<Item, ISubtypeInterpreter> interpreters;
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
 		// SubtypeRegistry sr = (SubtypeRegistry) subtypeRegistry;
@@ -62,8 +61,8 @@ public class JeiPlugin implements IModPlugin {
 		// subtypeRegistry.useNbtForSubtypes(e.getValue());
 		// subtypeRegistry.registerSubtypeInterpreter(e.getValue(), new
 		// GeyserRecipeSubtypeInterpreter());
-//		subtypeRegistry.registerSubtypeInterpreter(GeyserRecipesForge.DUMMY_ITEM,
-//				new GeyserRecipeSubtypeInterpreter());
+		// subtypeRegistry.registerSubtypeInterpreter(GeyserRecipesForge.DUMMY_ITEM,
+		// new GeyserRecipeSubtypeInterpreter());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -78,7 +77,7 @@ public class JeiPlugin implements IModPlugin {
 			if (o instanceof SpigotRecipeWrapperForgeWrapper) {
 				SpigotRecipeWrapperForgeWrapper wrapper = (SpigotRecipeWrapperForgeWrapper) o;
 				if (HIDDEN_RECIPES.contains(wrapper))
-					recipeRegistry.hideRecipe(wrapper);
+					recipeRegistry.hideRecipe(wrapper, VanillaRecipeCategoryUid.CRAFTING);
 			}
 		}
 	}
@@ -87,6 +86,7 @@ public class JeiPlugin implements IModPlugin {
 		for (SpigotRecipeWrapperForgeWrapper wrapper : SHOWN_RECIPES) {
 			SHOWN_RECIPES.remove(wrapper);
 			HIDDEN_RECIPES.add(wrapper);
+			RECIPE_REGISTRY.hideRecipe(wrapper, VanillaRecipeCategoryUid.CRAFTING);
 		}
 	}
 
@@ -94,7 +94,7 @@ public class JeiPlugin implements IModPlugin {
 	public static void addRecipe(SpigotRecipeWrapperForge recipe) {
 		if (!Loader.isModLoaded("jei"))
 			return;
-		System.out.println("adding " + recipe.getRecipe().getRegistryName());
+		// System.out.println("adding " + recipe.getRecipe().getRegistryName());
 		SpigotRecipeWrapperForgeWrapper wrapper = new SpigotRecipeWrapperForgeWrapper(
 				MOD_REGISTRY.getJeiHelpers(), recipe);
 		RECIPE_REGISTRY.addRecipe(wrapper, VanillaRecipeCategoryUid.CRAFTING);

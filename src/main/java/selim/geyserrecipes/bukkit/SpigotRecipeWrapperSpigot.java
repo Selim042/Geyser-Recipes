@@ -94,7 +94,6 @@ public class SpigotRecipeWrapperSpigot {
 		BukkitByteBufUtils.writeUTF8String(buf, recipe.getKey().toString());
 		ItemStack result = recipe.getResult();
 		// Result
-		System.out.println("writing ItemStack 0");
 		BukkitByteBufUtils.writeItemStack(buf, result);
 		// Recipe shape, line by line
 		String[] shape = recipe.getShape();

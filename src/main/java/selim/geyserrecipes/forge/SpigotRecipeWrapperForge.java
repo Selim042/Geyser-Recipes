@@ -71,7 +71,6 @@ public class SpigotRecipeWrapperForge implements IMessage {
 			this.recipe = readShapeless(buf);
 			break;
 		}
-		System.out.println("from bytes, recipe name: " + this.recipe.getRegistryName());
 	}
 
 	private static ShapedOreRecipe readShaped(ByteBuf buf) {
@@ -235,8 +234,6 @@ public class SpigotRecipeWrapperForge implements IMessage {
 				@Override
 				public void run() {
 					JeiPlugin.addRecipe(message);
-					Minecraft.getMinecraft().player
-							.addItemStackToInventory(message.recipe.getRecipeOutput().copy());
 				}
 			});
 			return null;
