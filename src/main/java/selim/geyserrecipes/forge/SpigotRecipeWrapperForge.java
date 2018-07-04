@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.ShapelessRecipe;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -36,20 +33,21 @@ public class SpigotRecipeWrapperForge implements IMessage {
 		return this.recipe;
 	}
 
+	// Should never be called
 	@Override
 	public void toBytes(ByteBuf buf) {
-		String type = getRecipeType(recipe);
-		if (type == null)
-			return;
-		ByteBufUtils.writeUTF8String(buf, type);
-		switch (type) {
-		case GeyserRecipesInfo.SHAPED_RECIPE:
-			writeShaped(buf, (ShapedOreRecipe) this.recipe);
-			break;
-		case GeyserRecipesInfo.SHAPELESS_RECIPE:
-			writeShapeless(buf, (ShapelessOreRecipe) this.recipe);
-			break;
-		}
+		// String type = getRecipeType(recipe);
+		// if (type == null)
+		// return;
+		// ByteBufUtils.writeUTF8String(buf, type);
+		// switch (type) {
+		// case GeyserRecipesInfo.SHAPED_RECIPE:
+		// writeShaped(buf, (ShapedOreRecipe) this.recipe);
+		// break;
+		// case GeyserRecipesInfo.SHAPELESS_RECIPE:
+		// writeShapeless(buf, (ShapelessOreRecipe) this.recipe);
+		// break;
+		// }
 	}
 
 	@Override
@@ -215,13 +213,13 @@ public class SpigotRecipeWrapperForge implements IMessage {
 		return new ResourceLocation(string);
 	}
 
-	private static String getRecipeType(IRecipe recipe) {
-		if (recipe instanceof ShapedRecipe)
-			return GeyserRecipesInfo.SHAPED_RECIPE;
-		if (recipe instanceof ShapelessRecipe)
-			return GeyserRecipesInfo.SHAPELESS_RECIPE;
-		return null;
-	}
+	// private static String getRecipeType(IRecipe recipe) {
+	// if (recipe instanceof ShapedRecipe)
+	// return GeyserRecipesInfo.SHAPED_RECIPE;
+	// if (recipe instanceof ShapelessRecipe)
+	// return GeyserRecipesInfo.SHAPELESS_RECIPE;
+	// return null;
+	// }
 
 	public static class Handler implements IMessageHandler<SpigotRecipeWrapperForge, IMessage> {
 

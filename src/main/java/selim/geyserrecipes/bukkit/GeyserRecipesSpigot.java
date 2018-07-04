@@ -20,6 +20,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ClickEvent.Action;
+import net.md_5.bungee.api.chat.TextComponent;
 import selim.geyserrecipes.shared.GeyserRecipesInfo;
 
 public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
@@ -60,8 +64,16 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 				if (!sent) {
 					player.sendMessage("This server has " + GeyserRecipesInfo.NAME + " installed. "
 							+ "If you install the client companion Forge mod, "
-							+ "you can see any custom recipes from Spigot plugins installed on the server.");
-					player.sendMessage("You can find the mod here: ");
+							+ "you can see any custom recipes from Spigot plugins installed on the server in JEI.");
+					TextComponent base = new TextComponent("You can find the mod ");
+					TextComponent link = new TextComponent("here.");
+					link.setUnderlined(true);
+					link.setColor(ChatColor.BLUE);
+					link.setClickEvent(new ClickEvent(Action.OPEN_URL, GeyserRecipesInfo.DOWNLOAD_LINK));
+					base.addExtra(link);
+					player.spigot().sendMessage(base);
+					// player.sendMessage("You can find the mod here: " +
+					// GeyserRecipesInfo.DOWNLOAD_LINK);
 				}
 			}
 		}, ping);
