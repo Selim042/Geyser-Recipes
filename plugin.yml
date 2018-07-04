@@ -1,4 +1,4 @@
 name: GeyserRecipes
 main: selim.geyserrecipes.bukkit.GeyserRecipesSpigot
 depend: [ProtocolLib]
-version: 0.0.1
+version: 1.12-1.0.0
