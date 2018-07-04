@@ -42,11 +42,28 @@ public class JeiPlugin implements IModPlugin {
 		// SpigotRecipeRegistryProvider(registry));
 	}
 
+	// public static SubtypeRegistry subtypeRegistry;
+	// public static Map<Item, ISubtypeInterpreter> interpreters;
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
-		subtypeRegistry.registerSubtypeInterpreter(GeyserRecipesForge.DUMMY_ITEM,
-				new DummyItemSubtypeInterpreter());
-		// subtypeRegistry.useNbtForSubtypes(GeyserRecipesForge.DUMMY_ITEM);
+		// SubtypeRegistry sr = (SubtypeRegistry) subtypeRegistry;
+		// try {
+		// interpreters = (Map<Item, ISubtypeInterpreter>) sr.getClass()
+		// .getDeclaredField("interpreters").get(sr);
+		// } catch (IllegalArgumentException | IllegalAccessException |
+		// NoSuchFieldException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// for (Entry<ResourceLocation, Item> e :
+		// ForgeRegistries.ITEMS.getEntries())
+		// subtypeRegistry.useNbtForSubtypes(e.getValue());
+		// subtypeRegistry.registerSubtypeInterpreter(e.getValue(), new
+		// GeyserRecipeSubtypeInterpreter());
+//		subtypeRegistry.registerSubtypeInterpreter(GeyserRecipesForge.DUMMY_ITEM,
+//				new GeyserRecipeSubtypeInterpreter());
 	}
 
 	@SuppressWarnings("unchecked")

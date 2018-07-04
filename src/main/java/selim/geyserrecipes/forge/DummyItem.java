@@ -28,6 +28,12 @@ public class DummyItem extends Item {
 		NBTTagCompound nbt = stack.getOrCreateSubCompound("wrapped");
 		for (String key : nbt.getKeySet())
 			tooltip.add(key);
+		// NBTTagCompound nbt = wrappedStack.getTagCompound();
+		// if (nbt == null)
+		// return NONE;
+		// System.out.println("sorting by: " +
+		// nbt.getString(GeyserRecipesInfo.ID + ":recipe_name"));
+		tooltip.add(nbt.getString(GeyserRecipesInfo.ID + ":recipe_name"));
 	}
 
 	@Override
@@ -55,18 +61,19 @@ public class DummyItem extends Item {
 		return new ItemStack(wrappedNbt);
 	}
 
-	public static ItemStack getWrapperStack(ItemStack stack) {
-		if (stack == null || stack.isEmpty())
-			return ItemStack.EMPTY;
-		NBTTagCompound wrappedNbt = stack.serializeNBT();
-		ItemStack dummyStack = new ItemStack(GeyserRecipesForge.DUMMY_ITEM);
-		NBTTagCompound dummyNbt = dummyStack.getTagCompound();
-		if (dummyNbt == null) {
-			dummyNbt = new NBTTagCompound();
-			dummyStack.setTagCompound(dummyNbt);
-		}
-		dummyNbt.setTag("wrapped", wrappedNbt);
-		return dummyStack;
-	}
+	// Commented because I disabled the dummy item
+	// public static ItemStack getWrapperStack(ItemStack stack) {
+	// if (stack == null || stack.isEmpty())
+	// return ItemStack.EMPTY;
+	// NBTTagCompound wrappedNbt = stack.serializeNBT();
+	// ItemStack dummyStack = new ItemStack(GeyserRecipesForge.DUMMY_ITEM);
+	// NBTTagCompound dummyNbt = dummyStack.getTagCompound();
+	// if (dummyNbt == null) {
+	// dummyNbt = new NBTTagCompound();
+	// dummyStack.setTagCompound(dummyNbt);
+	// }
+	// dummyNbt.setTag("wrapped", wrappedNbt);
+	// return dummyStack;
+	// }
 
 }

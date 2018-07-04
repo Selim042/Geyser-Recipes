@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import selim.geyserrecipes.shared.GeyserRecipesInfo;
 
-public class DummyItemSubtypeInterpreter implements ISubtypeInterpreter {
+public class GeyserRecipeSubtypeInterpreter implements ISubtypeInterpreter {
 
 	@Override
 	public String apply(ItemStack stack) {

@@ -38,17 +38,17 @@ public class GeyserRecipesForge {
 	// MinecraftForge.EVENT_BUS.register(this);
 	// }
 
-	@ObjectHolder(GeyserRecipesInfo.ID + ":dummy_item")
-	public static final DummyItem DUMMY_ITEM = null;
-
-	@Mod.EventBusSubscriber
-	public static class StupidRegistrySubclass {
-
-		@SubscribeEvent
-		public static void registerItems(RegistryEvent.Register<Item> event) {
-			event.getRegistry().register(new DummyItem());
-		}
-
-	}
+	// @ObjectHolder(GeyserRecipesInfo.ID + ":dummy_item")
+	// public static final DummyItem DUMMY_ITEM = null;
+	//
+	// @Mod.EventBusSubscriber
+	// public static class StupidRegistrySubclass {
+	//
+	// @SubscribeEvent
+	// public static void registerItems(RegistryEvent.Register<Item> event) {
+	// event.getRegistry().register(new DummyItem());
+	// }
+	//
+	// }
 
 }

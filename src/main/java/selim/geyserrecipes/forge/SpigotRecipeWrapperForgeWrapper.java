@@ -27,11 +27,11 @@ public class SpigotRecipeWrapperForgeWrapper implements IShapedCraftingRecipeWra
 		ingredients.setInputLists(ItemStack.class, stackHelper
 				.expandRecipeItemStackInputs(this.recipeWrapper.getRecipe().getIngredients()));
 		ItemStack result = this.recipeWrapper.getRecipe().getRecipeOutput();
-		ItemStack wrappedStack = DummyItem.getWrapperStack(result);
+		// ItemStack wrappedStack = DummyItem.getWrapperStack(result);
 		// if (wrappedStack == ItemStack.EMPTY)
 		List<ItemStack> output = new LinkedList<>();
-		output.add(wrappedStack);
 		output.add(result);
+		// output.add(wrappedStack);
 		ingredients.setOutput(ItemStack.class, output);
 		// else
 		// ingredients.setOutput(ItemStack.class,
