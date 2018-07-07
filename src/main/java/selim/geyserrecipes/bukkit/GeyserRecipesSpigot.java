@@ -66,10 +66,11 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 							+ "If you install the client companion Forge mod, "
 							+ "you can see any custom recipes from Spigot plugins installed on the server in JEI.");
 					TextComponent base = new TextComponent("You can find the mod ");
-					TextComponent link = new TextComponent("here.");
+					TextComponent link = new TextComponent("here");
 					link.setUnderlined(true);
 					link.setColor(ChatColor.BLUE);
 					link.setClickEvent(new ClickEvent(Action.OPEN_URL, GeyserRecipesInfo.DOWNLOAD_LINK));
+					link.addExtra(new TextComponent("."));
 					base.addExtra(link);
 					player.spigot().sendMessage(base);
 					// player.sendMessage("You can find the mod here: " +
