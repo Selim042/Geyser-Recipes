@@ -1,9 +1,9 @@
-package selim.geyserrecipes.forge;
+package selim.geyser.recipes.forge;
 
 import mezz.jei.api.ISubtypeRegistry.ISubtypeInterpreter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import selim.geyserrecipes.shared.GeyserRecipesInfo;
+import selim.geyser.recipes.shared.GeyserRecipesInfo;
 
 public class GeyserRecipeSubtypeInterpreter implements ISubtypeInterpreter {
 

@@ -1,4 +1,4 @@
-package selim.geyserrecipes.forge;
+package selim.geyser.recipes.forge;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import selim.geyserrecipes.shared.GeyserRecipesInfo;
+import selim.geyser.recipes.shared.GeyserRecipesInfo;
 
 public class SpigotRecipeWrapperForge implements IMessage {
 

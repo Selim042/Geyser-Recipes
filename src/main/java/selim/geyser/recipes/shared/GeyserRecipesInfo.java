@@ -1,4 +1,4 @@
-package selim.geyserrecipes.shared;
+package selim.geyser.recipes.shared;
 
 public class GeyserRecipesInfo {
 

@@ -1,4 +1,4 @@
-package selim.geyserrecipes.forge;
+package selim.geyser.recipes.forge;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

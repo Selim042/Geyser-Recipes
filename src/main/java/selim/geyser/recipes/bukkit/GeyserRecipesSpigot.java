@@ -1,4 +1,4 @@
-package selim.geyserrecipes.bukkit;
+package selim.geyser.recipes.bukkit;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
@@ -24,9 +24,11 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ClickEvent.Action;
 import net.md_5.bungee.api.chat.TextComponent;
-import selim.geyserrecipes.shared.GeyserRecipesInfo;
+import selim.geyser.core.shared.EnumComponent;
+import selim.geyser.core.shared.IGeyserCorePlugin;
+import selim.geyser.recipes.shared.GeyserRecipesInfo;
 
-public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
+public class GeyserRecipesSpigot extends JavaPlugin implements Listener, IGeyserCorePlugin {
 
 	@Override
 	public void onEnable() {
@@ -148,6 +150,11 @@ public class GeyserRecipesSpigot extends JavaPlugin implements Listener {
 			player.sendPluginMessage(this, GeyserRecipesInfo.CHANNEL, buf.array());
 		}
 		return true;
+	}
+
+	@Override
+	public EnumComponent[] providedComponents() {
+		return new EnumComponent[] { EnumComponent.RECIPES };
 	}
 
 }

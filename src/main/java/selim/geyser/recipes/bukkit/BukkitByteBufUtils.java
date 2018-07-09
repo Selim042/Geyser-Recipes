@@ -1,4 +1,4 @@
-package selim.geyserrecipes.bukkit;
+package selim.geyser.recipes.bukkit;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

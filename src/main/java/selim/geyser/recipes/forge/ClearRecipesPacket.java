@@ -1,4 +1,4 @@
-package selim.geyserrecipes.forge;
+package selim.geyser.recipes.forge;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;

@@ -1,4 +1,4 @@
-package selim.geyserrecipes.bukkit;
+package selim.geyser.recipes.bukkit;
 
 import org.bukkit.inventory.ItemStack;
 
@@ -6,7 +6,7 @@ import com.comphenix.protocol.wrappers.nbt.NbtCompound;
 import com.comphenix.protocol.wrappers.nbt.NbtFactory;
 import com.comphenix.protocol.wrappers.nbt.NbtType;
 
-import selim.geyserrecipes.shared.IItemStack;
+import selim.geyser.recipes.shared.IItemStack;
 
 public class SpigotItemStack implements IItemStack {
 

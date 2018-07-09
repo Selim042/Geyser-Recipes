@@ -1,4 +1,4 @@
-package selim.geyserrecipes.forge;
+package selim.geyser.recipes.forge;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import selim.geyserrecipes.shared.GeyserRecipesInfo;
+import selim.geyser.recipes.shared.GeyserRecipesInfo;
 
 public class DummyItem extends Item {
 

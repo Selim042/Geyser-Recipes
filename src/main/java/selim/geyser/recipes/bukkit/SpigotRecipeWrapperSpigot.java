@@ -1,4 +1,4 @@
-package selim.geyserrecipes.bukkit;
+package selim.geyser.recipes.bukkit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
 import io.netty.buffer.ByteBuf;
-import selim.geyserrecipes.shared.GeyserRecipesInfo;
+import selim.geyser.recipes.shared.GeyserRecipesInfo;
 
 public class SpigotRecipeWrapperSpigot {
 

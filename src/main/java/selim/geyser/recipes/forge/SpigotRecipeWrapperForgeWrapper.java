@@ -1,4 +1,4 @@
-package selim.geyserrecipes.forge;
+package selim.geyser.recipes.forge;
 
 import java.util.LinkedList;
 import java.util.List;

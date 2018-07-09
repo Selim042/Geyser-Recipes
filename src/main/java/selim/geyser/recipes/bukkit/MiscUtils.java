@@ -1,4 +1,4 @@
-package selim.geyserrecipes.bukkit;
+package selim.geyser.recipes.bukkit;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
